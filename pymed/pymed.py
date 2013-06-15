@@ -250,8 +250,8 @@ class PubmedRecord(dict):
 
         Note . after regexp support in MNE-Python.
         regexp : str
-            Regular expression or substring to tell whether a particular expression
-            matches the text inside a record.
+            Regular expression or substring to tell whether a particular
+            expression matches characters in a record.
         """
         r_ = (re.compile('.*%s.*' % regexp if regexp.replace('_', '').isalnum()
               else regexp))
@@ -301,7 +301,7 @@ class PubmedRecord(dict):
     def get_pdf(self):
         """ Find and download the associated PDF
         """
-        pass
+        raise NotImplemented('This functionality is not available at present.')
 
     def get_doi(self):
         """ Check whethe record as doi
@@ -339,18 +339,20 @@ class PubmedRecord(dict):
 class Records(list):
     """ Process PubMed records
 
-    Note. As Records is a subclass of list all list methods are available. However
-    the list methods semantics is adapted to the problem this class aims to solce.
+    Note. Records is a subclass of list and therefore all list methods are
+    also available for instances of Records.
+    However, the list methods semantics is adapted to the Records use case.
 
-    These modifications can be summarized as follows:
-    - the append and extend method will only accept iterables containing instances
-      of PubmedRecord. The same holds true for the `+` and `+=` operators.
-    - Slicing will return a new instance of Records. Informations on to be excluded
-      records will be lost.
-    - pop modifies the exclude_ attribute if it is not empty so all indices
+    These differences can be summarized as follows:
+    - the `append` and `extend` methods will only accept iterables of
+      PubmedRecord. The same holds true for the `+` and `+=` operators.
+    - `pop` modifies the exclude_ attribute if it is not empty so all indices
       remain intact after removing entires.
-    - insert willl that the exclude_ list is empty. This is to prevent funky
+    - Slicing will return a new instance of Records, but discards the
+      `exclude_` attribute.
+    - `insert` requires `exclude_` to be empty. This is to prevent funky
       side-effects.
+
     To access standard list functionality the convenience method `tolist` is
     provided.
 
@@ -362,9 +364,9 @@ class Records(list):
     Attributes
     ----------
     exclude_ : list
-        The record indices to drop. Note. exclude_ will be emptied when creating
-        constructing a new instance as it is assumed that creating Records from
-        existing records is performed in order to filter records.
+        The record indices to drop. Note. exclude_ will be emptied when
+        creating new instances as it is assumed that creating records
+        from existing records is performed to filter out.
 
     Methods
     -------
@@ -376,7 +378,7 @@ class Records(list):
         Drop records marked for exclusion.
     save:
         Save the records to a json file. The current session can later be
-        resored using the `read_records` funciton.
+        restored using the `read_records` function.
     save_as_bibtex:
         Save records in BibTex format.
     save_as_nbib:
@@ -395,7 +397,7 @@ class Records(list):
                width=80):
         """ Browse and drop records
 
-        This method allows to iterate over records, display its contents
+        This method allows to iterate over records, display their contents
         and to make a decision whether to keep the record or not.
         If the user input is `n`, the record will be discarded or marked for
         removal, depending on the parameters passed.
@@ -406,8 +408,8 @@ class Records(list):
         show_fields : list-like
             The fields to display.
         inplace : bool
-            If True, records are dropped in-place. If False, the the indices are
-            added to to the `exclude_` attribute.
+            If True, records are dropped in-place. If False, the indices
+            are added to to the `exclude_` attribute.
         width : int
             The number of characters to display in one line.
         """
@@ -427,7 +429,7 @@ class Records(list):
             self.exclude_ = [i for i in remove_idx if i not in self.exclude_]
 
     def find(self, regexp):
-        """ Find recors for which as substring or regexp matches
+        """ Find records for which as substring or regexp matches
 
         regexp : str
             Regular expression or substring to select particular records. E.g.
