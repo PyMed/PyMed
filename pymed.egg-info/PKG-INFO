@@ -1,0 +1,98 @@
+Metadata-Version: 1.1
+Name: pymed
+Version: 0.1.git
+Summary: MNE python project for MEG and EEG data analysis.
+Home-page: UNKNOWN
+Author: Denis A. Engemann
+Author-email: d.engemann@fz-juelich.de
+License: BSD (3-clause)
+Download-URL: https://github.com/dengemann/pymed.git
+Description: .. -*- mode: rst -*-
+        
+        `pymed <https://github.com/dengemann/pymed>`_
+        =======================================================
+        
+        This package is designed for interactively working with PubMed data
+        and provides a tiny but powefull API helpful for creating
+        automated task based on PubMed records.
+        
+        Get more information
+        ^^^^^^^^^^^^^^^^^^^^
+        
+        This page only contains bare-bones instructions for installing PyMed.
+        
+        
+        Get the latest code
+        ^^^^^^^^^^^^^^^^^^^
+        
+        To get the latest code using git, simply type::
+        
+            git clone git@github.com:dengemann/pymed.git
+        
+        If you don't have git installed, you can download a zip or tarball
+        of the latest code: https://github.com/dengemann/pymed.git
+        
+        Install PyMed
+        ^^^^^^^^^^^^^
+        XXX missing
+        
+        Dependencies
+        ^^^^^^^^^^^^
+        
+        The required dependencies to build the software are Python >= 2.6,
+        NumPy >= 1.4, and Biopython >= 1.58
+        
+        
+        Contribute to pymed
+        ^^^^^^^^^^^^^^^^^^^
+        
+        XXX missing
+        
+        Licensing
+        ^^^^^^^^^
+        
+        PyMed is **BSD-licenced** (3 clause):
+        
+            This software is OSI Certified Open Source Software.
+            OSI Certified is a certification mark of the Open Source Initiative.
+        
+            Copyright (c) 2012, authors of PyMed
+            All rights reserved.
+        
+            Redistribution and use in source and binary forms, with or without
+            modification, are permitted provided that the following conditions are met:
+        
+            * Redistributions of source code must retain the above copyright notice,
+              this list of conditions and the following disclaimer.
+        
+            * Redistributions in binary form must reproduce the above copyright notice,
+              this list of conditions and the following disclaimer in the documentation
+              and/or other materials provided with the distribution.
+        
+            * Neither the names of PyMed authors nor the names of any
+              contributors may be used to endorse or promote products derived from
+              this software without specific prior written permission.
+        
+            **This software is provided by the copyright holders and contributors
+            "as is" and any express or implied warranties, including, but not
+            limited to, the implied warranties of merchantability and fitness for
+            a particular purpose are disclaimed. In no event shall the copyright
+            owner or contributors be liable for any direct, indirect, incidental,
+            special, exemplary, or consequential damages (including, but not
+            limited to, procurement of substitute goods or services; loss of use,
+            data, or profits; or business interruption) however caused and on any
+            theory of liability, whether in contract, strict liability, or tort
+            (including negligence or otherwise) arising in any way out of the use
+            of this software, even if advised of the possibility of such
+            damage.**
+Platform: any
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development
+Classifier: Topic :: Scientific/Engineering
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
