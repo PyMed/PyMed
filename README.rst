@@ -3,9 +3,7 @@
 `pymed <https://github.com/dengemann/pymed>`_
 =======================================================
 
-This package is designed for interactively working with PubMed data
-and provides a tiny but powefull API fo helpful for creating
-automated task based on PubMed records.
+This package is designed for interactive and script-base processing of PubMed records.
 
 Get more information
 ^^^^^^^^^^^^^^^^^^^^
@@ -18,10 +16,10 @@ Get the latest code
 
 To get the latest code using git, simply type::
 
-    git clone git@github.com:dengemann/pymed.git
+    git clone git@github.com:PyMed/PyMed.git
 
 If you don't have git installed, you can download a zip or tarball
-of the latest code: https://github.com/dengemann/pymed.git
+of the latest code: git@github.com:PyMed/PyMed.git
 
 Install PyMed
 ^^^^^^^^^^^^^
