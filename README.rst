@@ -1,6 +1,6 @@
 .. -*- mode: rst -*-
 
-`pymed <https://github.com/dengemann/pymed>`_
+`PyMed <https://github.com/PyMed/PyMed>`_
 =======================================================
 
 This package is designed for interactive and script-base processing of PubMed records.
