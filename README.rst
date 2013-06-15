@@ -1,5 +1,4 @@
 .. -*- mode: rst -*-
-
 `PyMed <https://github.com/PyMed/PyMed>`_
 =======================================================
 
@@ -19,7 +18,9 @@ To get the latest code using git, simply type::
     git clone git@github.com:PyMed/PyMed.git
 
 If you don't have git installed, you can download a zip or tarball
-of the latest code: git@github.com:PyMed/PyMed.git
+of the latest code:: 
+    
+    git@github.com:PyMed/PyMed.git
 
 Install PyMed
 ^^^^^^^^^^^^^
