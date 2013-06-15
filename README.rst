@@ -2,7 +2,7 @@
 `PyMed <https://github.com/PyMed/PyMed>`_
 =======================================================
 
-This package is designed for interactive and script-base processing of PubMed records.
+This package is designed for interactive as well as scripting-oriented processing of PubMed records.
 
 Get more information
 ^^^^^^^^^^^^^^^^^^^^
