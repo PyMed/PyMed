@@ -250,8 +250,8 @@ class PubmedRecord(dict):
 
         Note . after regexp support in MNE-Python.
         regexp : str
-            Regular expression or substring to tell whether a particular expression
-            matches the text inside a record.
+            Regular expression or substring to tell whether a particular
+            expression matches characters in a record.
         """
         r_ = (re.compile('.*%s.*' % regexp if regexp.replace('_', '').isalnum()
               else regexp))
