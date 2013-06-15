@@ -3,9 +3,9 @@
 # License: BSD (3-clause)
 
 """
-
-Load and Process Previously Saved Records
------------------------------------------
+=========================================
+Load and process previously saved records
+=========================================
 
 In this example previously downloaded records will be loaded.
 Subsequently unwatned records will be discared and finally
@@ -29,8 +29,8 @@ recs.pop(-1)
 # ... read one record
 print recs[12].to_ascii(width=100)
 
-# ... resolve digitital object identifier of record
-# (requires internet connection).
+# ... resolve digital object identifier of record
+# (requires network connection).
 # print recs[12].resolve_doi()
 
 # ... print record in BibTex format
@@ -41,13 +41,13 @@ print recs[12].to_bibtex()
 print recs[12].year
 
 # ... get contents as corpus (concatenated as one string)
-# this is particularly useful for searchin terms in records.
+# this is particularly useful for search in terms in records.
 print recs[12].as_corpus()
 
 # We will now make use this to filter out the relevant records.
 # In our example these are the ones with complete abstracts
 # and `brain` mentioned somewhere in the text.
-recs = pm.Records(r for r in recs if 'AB' in r and 'brain' in r.as_corpus())
+recs = pm.Records(r for r in recs if 'AB' in r and r.match('brain'))
 print recs
 
 # ... now we will remove all records published before 2010.
@@ -73,10 +73,10 @@ print pm.Records(recs1 + recs2)
 # Now print unique records.
 print pm.Records(set(recs1 + recs2))
 
-# To read and keep / drop single records in a more manually controlled fashion
-# consider the browse function. It iterates ove the records, beautifully prints
-# the contents and awaits input as to whether keep the reocrd or not.
-# Uncommeny the following line to explore.
+
+# Uncomment the following line to read through your records and discard
+# uninteresting ones. Hit 'n' to drop, hit any other key to see the next
+# record.
 
 # recs.browse()
 
