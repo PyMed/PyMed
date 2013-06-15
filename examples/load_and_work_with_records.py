@@ -1,4 +1,4 @@
-# Author: Denis A. Engemann, email: denis.engemann@gmail.com
+# Author: Denis A. Engemann <denis.engemann@gmail.com>
 #
 # License: BSD (3-clause)
 
@@ -8,8 +8,11 @@ Load and process previously saved records
 =========================================
 
 In this example previously downloaded records will be loaded.
-Subsequently unwatned records will be discared and finally
-the remaining records will be exported in the BibTex format.
+We explore how to access and print single records.
+Subsequently, we will explore filtering and combining records.
+A last section shows how to save and export results for usage
+with bibliographic software.
+
 """
 print __doc__
 
@@ -18,23 +21,11 @@ import pymed as pm
 # load records
 recs = pm.read_records('sample_records_dki.json')
 
-# Our recs object is a subclass of list, we can pop, extend, append, insert.
-# e.g. remove last record.
-recs.pop(-1)
+###############################################################################
+# Access records in different ways
 
-# The elements of `recs` are instances of pymed.PubmedRecord,
-# as subclass of dict, and support methods and features that come in handy
-# for exploring data ...
-
-# ... read one record
+# ... read one record, nicely printed.
 print recs[12].to_ascii(width=100)
-
-# ... resolve digital object identifier of record
-# (requires network connection).
-# print recs[12].resolve_doi()
-
-# ... print record in BibTex format
-print recs[12].to_bibtex()
 
 # but also for filtering
 # ... get the publication year as integer
@@ -44,20 +35,36 @@ print recs[12].year
 # this is particularly useful for search in terms in records.
 print recs[12].as_corpus()
 
-# We will now make use this to filter out the relevant records.
-# In our example these are the ones with complete abstracts
-# and `brain` mentioned somewhere in the text.
+# ... resolve digital object identifier of record
+# (requires network connection).
+# print recs[12].resolve_doi()
+
+# Uncomment the following line to read through your records and discard
+# uninteresting ones. Hit 'n' to drop, hit any other key to see the next
+# record.
+
+# recs.browse()
+
+# Note. records are special cases of lists and a single records are special
+# cases of dictionaries.
+
+last_rec = recs.pop(-1)
+print last_rec.keys()
+
+###############################################################################
+# Filter and combine records
+
+# get all records that have an abstract and are related to brains.
 recs = pm.Records(r for r in recs if 'AB' in r and r.match('brain'))
 print recs
 
-# ... now we will remove all records published before 2010.
-# Note. the filter method will operat in-place, unless the copy
-# parameter is set to `True` (default is `False`).
+# remove all records published before 2010.
 recs = pm.Records(r for r in recs if r.year > 2010)
 print recs
 
 # Because of the PubMed ID records are unique and can therefore be hashed.
-# We thus can use set operations to work with records.
+# This means you can use records as keys in dictionaries or use set logic
+# to remove duplicates, take differences, etc.
 # In the following example we will create two overlapping collections
 # using random indices and then apply set operations to uniquely combine them.
 n_rec = len(recs)
@@ -67,19 +74,17 @@ inds1, inds2, = np.random.randint(n_rec / 2, size=(2, n_rec))
 recs1 = pm.Records(rec for ii, rec in enumerate(recs) if ii in inds1)
 recs2 = pm.Records(rec for ii, rec in enumerate(recs) if ii in inds2)
 
-# Print records together
-print pm.Records(recs1 + recs2)
-
 # Now print unique records.
 print pm.Records(set(recs1 + recs2))
 
+###############################################################################
+# Save and export results.
 
-# Uncomment the following line to read through your records and discard
-# uninteresting ones. Hit 'n' to drop, hit any other key to see the next
-# record.
-
-# recs.browse()
-
-# Finally we can export the records to a BibRex file. Another valid choice is
+# Finally we can export the records to a BibTex file. Another valid choice is
 # the Medline nbib format using he `save_as_nbib` method.
+
+# ... print single record in BibTex format
+print recs[12].to_bibtex()
+
+# ... save all records
 recs.save_as_bibtex('mybib.bib')

@@ -1,4 +1,4 @@
-# Author: Denis A. Engemann, email: denis.engemann@gmail.com
+# Author: Denis A. Engemann <denis.engemann@gmail.com>
 #
 # License: BSD (3-clause)
 
