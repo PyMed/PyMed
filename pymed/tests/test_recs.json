@@ -1,0 +1,175 @@
+[
+    {
+        "LID": "10.1002/mrm.24680 [doi]",
+        "STAT": "Publisher",
+        "DEP": "20130311",
+        "CI": [
+            "Copyright (c) 2013 Wiley Periodicals, Inc."
+        ],
+        "DA": "20130315",
+        "AID": [
+            "10.1002/mrm.24680 [doi]"
+        ],
+        "FAU": [
+            "Vanhoutte, Greetje",
+            "Pereson, Sandra",
+            "Delgado Y Palacios, Rafael",
+            "Guns, Pieter-Jan",
+            "Asselbergh, Bob",
+            "Veraart, Jelle",
+            "Sijbers, Jan",
+            "Verhoye, Marleen",
+            "Van Broeckhoven, Christine",
+            "Van der Linden, Annemie"
+        ],
+        "DP": "2013 Mar 11",
+        "OWN": "NLM",
+        "PT": [
+            "JOURNAL ARTICLE"
+        ],
+        "LA": [
+            "ENG"
+        ],
+        "CRDT": [
+            "2013/03/16 06:00"
+        ],
+        "JT": "Magnetic resonance in medicine : official journal of the Society of Magnetic Resonance in Medicine / Society of Magnetic Resonance in Medicine",
+        "TI": "Diffusion kurtosis imaging to detect amyloidosis in an APP/PS1 mouse model for Alzheimer's disease.",
+        "TA": "Magn Reson Med",
+        "JID": "8505245",
+        "AB": "PURPOSE: Amyloid deposition in the brain is considered an initial event in the progression of Alzheimer's disease. We hypothesized that the presence of amyloid plaques in the brain of APP/presenilin 1 mice leads to higher diffusion kurtosis measures due to increased microstructural complexity. As such, our purpose was to provide an in vivo proof of principle for detection of amyloidosis by diffusion kurtosis imaging (DKI). METHODS: APPKM670/671NL /presenilin 1 L166P mice (n = 5) and wild-type littermates (n = 5) underwent DKI at the age of 16 months. Averaged diffusion and diffusion kurtosis parameters were obtained for multiple regions (hippocampus-cortex-thalamus-cerebellum). After DKI, mice were sacrificed for amyloid staining. RESULTS: Histograms of the frequency distribution of the DKI parameters tended to shift to higher values. After normalization of absolute values to the cerebellum, a nearly plaque-free region, mean, radial, and axial diffusion kurtosis were significantly higher in APP/presenilin 1 mice as compared to wild-type in the cortex and thalamus, regions demonstrating substantial amyloid staining. CONCLUSION: The current study, although small-scale, suggests increased DKI metrics, in the absence of alterations in diffusion tensor imaging metrics in the cortex and thalamus of APP/presenilin 1 mice with established amyloidosis. These results warrant further investigations on the potential of DKI as a sensitive marker for Alzheimer's disease. Magn Reson Med, 2013. (c) 2013 Wiley Periodicals, Inc.",
+        "AD": "Department of Biomedical Sciences, Bio-Imaging Lab, University of Antwerp, Antwerp, Belgium.",
+        "IS": "1522-2594 (Electronic) 0740-3194 (Linking)",
+        "AU": [
+            "Vanhoutte G",
+            "Pereson S",
+            "Delgado Y Palacios R",
+            "Guns PJ",
+            "Asselbergh B",
+            "Veraart J",
+            "Sijbers J",
+            "Verhoye M",
+            "Van Broeckhoven C",
+            "Van der Linden A"
+        ],
+        "MHDA": "2013/03/16 06:00",
+        "PHST": [
+            "2012/10/18 [received]",
+            "2012/12/21 [revised]",
+            "2013/01/14 [accepted]"
+        ],
+        "EDAT": "2013/03/16 06:00",
+        "SO": "Magn Reson Med. 2013 Mar 11. doi: 10.1002/mrm.24680.",
+        "PMID": "23494926",
+        "PST": "aheadofprint"
+    },
+    {
+        "LID": "S1090-7807(13)00028-1 [pii] 10.1016/j.jmr.2013.01.014 [doi]",
+        "STAT": "Publisher",
+        "DEP": "20130206",
+        "CI": [
+            "Copyright (c) 2013 Elsevier Inc. All rights reserved."
+        ],
+        "DA": "20130222",
+        "AID": [
+            "S1090-7807(13)00028-1 [pii]",
+            "10.1016/j.jmr.2013.01.014 [doi]"
+        ],
+        "CRDT": [
+            "2013/02/23 06:00"
+        ],
+        "DP": "2013 Feb 6",
+        "OWN": "NLM",
+        "PT": [
+            "JOURNAL ARTICLE"
+        ],
+        "LA": [
+            "ENG"
+        ],
+        "FAU": [
+            "Lee, Chu-Yu",
+            "Bennett, Kevin M",
+            "Debbins, Josef P"
+        ],
+        "JT": "Journal of magnetic resonance (San Diego, Calif. : 1997)",
+        "PG": "19-26",
+        "TI": "Sensitivities of statistical distribution model and diffusion kurtosis model in varying microstructural environments: A Monte Carlo study.",
+        "TA": "J Magn Reson",
+        "JID": "9707935",
+        "AB": "The aim of this study was to investigate the microstructural sensitivity of the statistical distribution and diffusion kurtosis (DKI) models of non-monoexponential signal attenuation in the brain using diffusion-weighted MRI (DWI). We first developed a simulation of 2-D water diffusion inside simulated tissue consisting of semi-permeable cells and a variable cell size. We simulated a DWI acquisition of the signal in a volume using a pulsed gradient spin echo (PGSE) pulse sequence, and fitted the models to the simulated DWI signals using b-values up to 2500s/mm(2). For comparison, we calculated the apparent diffusion coefficient (ADC) of the monoexponential model (b-value=1000s/mm(2)). In separate experiments, we varied the cell size (5-10-15mum), cell volume fraction (0.50-0.65-0.80), and membrane permeability (0.001-0.01-0.1mm/s) to study how the fitted parameters tracked simulated microstructural changes. The ADC was sensitive to all the simulated microstructural changes except the decrease in membrane permeability. The ADC increased with larger cell size, smaller cell volume fraction, and larger membrane permeability. The sigma(stat) of the statistical distribution model increased exclusively with a decrease in cell volume fraction. The K(app) of the DKI model was exclusively increased with decreased cell size and decreased with increasing membrane permeability. These results suggest that the non-monoexponential models of water diffusion have different, specific microstructural sensitivity, and a combination of the models may give insights into the microstructural underpinning of tissue pathology.",
+        "AD": "Keller Center for Imaging Innovation, Neuroimaging Research, Barrow Neurological Institute, Phoenix, AZ, USA; School of Electrical, Computer, and Energy Engineering, Ira A. Fulton School of Engineering, Arizona State University, Tempe, AZ, USA.",
+        "VI": "230C",
+        "IS": "1096-0856 (Electronic) 1090-7807 (Linking)",
+        "AU": [
+            "Lee CY",
+            "Bennett KM",
+            "Debbins JP"
+        ],
+        "MHDA": "2013/02/23 06:00",
+        "PHST": [
+            "2012/10/20 [received]",
+            "2013/01/12 [revised]",
+            "2013/01/19 [accepted]"
+        ],
+        "EDAT": "2013/02/23 06:00",
+        "SO": "J Magn Reson. 2013 Feb 6;230C:19-26. doi: 10.1016/j.jmr.2013.01.014.",
+        "PMID": "23428968",
+        "PST": "aheadofprint"
+    },
+    {
+        "LID": "10.1109/EMBC.2012.6346422 [doi]",
+        "STAT": "In-Data-Review",
+        "JT": "Conference proceedings : ... Annual International Conference of the IEEE Engineering in Medicine and Biology Society. IEEE Engineering in Medicine and Biology Society. Conference",
+        "DA": "20130131",
+        "AID": [
+            "10.1109/EMBC.2012.6346422 [doi]"
+        ],
+        "FAU": [
+            "Li, Xianjun",
+            "Gao, Jie",
+            "Hou, Xin",
+            "Chan, Kevin C",
+            "Ding, Abby",
+            "Sun, Qinli",
+            "Wan, Mingxi",
+            "Wu, Ed X",
+            "Yang, Jian"
+        ],
+        "DP": "2012 Aug",
+        "OWN": "NLM",
+        "PT": [
+            "Journal Article"
+        ],
+        "LA": [
+            "eng"
+        ],
+        "CRDT": [
+            "2013/02/01 06:00"
+        ],
+        "PG": "2298-301",
+        "TI": "Diffusion kurtosis imaging with tract-based spatial statistics reveals white matter alterations in preschool children.",
+        "PL": "United States",
+        "TA": "Conf Proc IEEE Eng Med Biol Soc",
+        "JID": "101243413",
+        "AB": "Diffusion kurtosis imaging (DKI), an extension of diffusion tensor imaging (DTI), provides a practical method to describe non-Gaussian water diffusion in neural tissues. The sensitivity of DKI to detect the subtle changes in several chosen brain structures has been studied. However, intuitive and holistic methods to validate the merits of DKI remain to be explored. In this paper, tract-based spatial statistics (TBSS) was used to demonstrate white matter alterations in both DKI and DTI parameters in preschool children (1-6 years; n=10). Correlation analysis was also performed in multiple regions of interest (ROIs). Fractional anisotropy, mean kurtosis, axial kurtosis and radial kurtosis increased with age, while mean diffusivity and radial diffusivity decreased significantly with age. Fractional anisotropy of kurtosis and axial diffusivity were found to be less sensitive to the changes with age. These preliminary findings indicated that TBSS could be used to detect subtle changes of DKI parameters on the white matter tract. Kurtosis parameters, except fractional anisotropy of kurtosis, demonstrated higher sensitivity than DTI parameters. TBSS may be a convenient method to yield higher sensitivity of DKI.",
+        "VI": "2012",
+        "IS": "1557-170X (Print) 1557-170X (Linking)",
+        "AU": [
+            "Li X",
+            "Gao J",
+            "Hou X",
+            "Chan KC",
+            "Ding A",
+            "Sun Q",
+            "Wan M",
+            "Wu EX",
+            "Yang J"
+        ],
+        "MHDA": "2013/02/01 06:00",
+        "EDAT": "2013/02/01 06:00",
+        "SO": "Conf Proc IEEE Eng Med Biol Soc. 2012 Aug;2012:2298-301. doi: 10.1109/EMBC.2012.6346422.",
+        "SB": "IM",
+        "PMID": "23366383",
+        "PST": "ppublish"
+    }
+]
