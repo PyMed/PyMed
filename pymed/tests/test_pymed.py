@@ -77,6 +77,13 @@ def test_records_selection():
     recs2 = Records(r for r in recs if r.year > 2012)
     assert_true(2012 not in [r.year for r in recs2])
 
+    # test match
+    mystring = ' spam eggs spam eggs'
+    recs[0]['AB'] += mystring
+    found = recs.find(mystring)
+    assert_true(found == recs[:1])
+    assert_true(found[0].match(mystring))
+
 
 def test_pubmed_record():
     pass

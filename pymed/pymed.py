@@ -253,7 +253,12 @@ class PubmedRecord(dict):
             Regular expression or substring to tell whether a particular
             expression matches characters in a record.
         """
-        r_ = (re.compile('.*%s.*' % regexp if regexp.replace('_', '').isalnum()
+        def is_substring(string):
+            for rep in '-_ ':
+                string = string.replace(rep, '')
+            return string.isalnum()
+
+        r_ = (re.compile('.*%s.*' % regexp if is_substring(regexp)
               else regexp))
         return r_.match(self.as_corpus())
 
