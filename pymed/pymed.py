@@ -29,7 +29,7 @@ Volume = {%(VOL)s}}
 
 
 def read_records(fname):
-    """ Load Finder instance from previous session
+    """ Load records from disk
 
     Parameters
     ----------
@@ -72,8 +72,7 @@ def write_records(records, fname, mode='w', indent=None,
 
 
 def _bibtex_get_author(author_list):
-    """ Aux Function
-    """
+    """Aux Function"""
     out = []
     for author in author_list:
         names = author.split(' ')
@@ -88,16 +87,14 @@ def _bibtex_get_author(author_list):
 
 
 def _bibtex_make_id(author, journal, year):
-    """ Aux Function
-    """
+    """Aux Function"""
     fmt = (''.join(c for c in author[0].split(' ')[0].lower() if c.isalpha()),
            str(year))
     return ':'.join(fmt)
 
 
 def _bibtex_get_pages(pages_str):
-    """ Aux Function
-    """
+    """Aux Function"""
     if PMD.SEP_PAGES_ENTRY in pages_str:
         pages_str = pages_str.split(PMD.SEP_PAGES_ENTRY)[0]
     if '-' in pages_str:
@@ -110,8 +107,7 @@ def _bibtex_get_pages(pages_str):
 
 
 def _bibtex_get_publication_type(ins):
-    """ Aux Function
-    """
+    """Aux Function"""
     out = 'article'
     # if isinstance(ins, list):
     #     ins = '--'.join(ins)
@@ -121,14 +117,12 @@ def _bibtex_get_publication_type(ins):
 
 
 def _make_chunks(n, iterable, padvalue=None):
-    """ Aux Function: create chunks
-    """
+    """Aux Function: create chunks"""
     return izip_longest(*[iter(iterable)] * n, fillvalue=padvalue)
 
 
 def _get_doi(rec):
-    """ Aux Function
-    """
+    """Aux Function"""
     doi = rec.get('AID', rec.get('SO',  rec.get('LID', None)))
     if isinstance(doi, list):
         doi = ''.join([d for d in doi if 'doi' in d])
@@ -139,7 +133,7 @@ def _get_doi(rec):
 
 
 def resolve_doi(rec):
-    """ Resolve the doi of a given record """
+    """Resolve the doi of a given record"""
     doi = _get_doi(rec)
     if doi is not None:
         res = None
@@ -151,8 +145,7 @@ def resolve_doi(rec):
 
 
 def _export_records(records, fname, end, method):
-    """ Aux Function
-    """
+    """Aux Function"""
     if not fname.endswith(end):
         fname += end
     with open(fname, 'w') as fd:
@@ -162,7 +155,7 @@ def _export_records(records, fname, end, method):
 
 
 class PubmedRecord(dict):
-    """ Handle PubMed data
+    """Handle PubMed data
 
     Note. As the PubMed ID is unique instances of PubmedRecord can be used
     As keys in a dict and can be used with set functions. This is useful
@@ -195,7 +188,7 @@ class PubmedRecord(dict):
             self[k] = v
 
     def as_corpus(self, fields=None):
-        """ Return record as single string.
+        """Return record as single string.
 
         Parameters
         ----------
@@ -221,7 +214,7 @@ class PubmedRecord(dict):
         return ''.join(corpus)
 
     def to_ascii(self, show_fields=('TI', 'AU', 'DP', 'AB'), width=80):
-        """ pretty print record
+        """pretty print record
 
         Parameters
         ----------
@@ -246,7 +239,7 @@ class PubmedRecord(dict):
             print pretty_field + out
 
     def match(self, regexp):
-        """ match the text corpus against a regular expression or substring
+        """match the text corpus against a regular expression or substring
 
         Note . after regexp support in MNE-Python.
         regexp : str
@@ -263,7 +256,7 @@ class PubmedRecord(dict):
         return r_.match(self.as_corpus())
 
     def to_nbib(self):
-        """ Export record in Medline format
+        """Export record in Medline format
 
         Returns
         -------
@@ -282,7 +275,7 @@ class PubmedRecord(dict):
         return out
 
     def to_bibtex(self):
-        """ Export record in BibTex format
+        """Export record in BibTex format
 
         Returns
         -------
@@ -304,12 +297,11 @@ class PubmedRecord(dict):
         return BIBTEX_TMP % fmt
 
     def get_pdf(self):
-        """ Find and download the associated PDF
-        """
+        """Find and download the associated PDF"""
         raise NotImplemented('This functionality is not available at present.')
 
     def get_doi(self):
-        """ Check whethe record as doi
+        """Check whethe record as doi
 
         Returns
         -------
@@ -342,7 +334,7 @@ class PubmedRecord(dict):
 
 
 class Records(list):
-    """ Process PubMed records
+    """Process PubMed records
 
     Note. Records is a subclass of list and therefore all list methods are
     also available for instances of Records.
@@ -366,32 +358,6 @@ class Records(list):
     records : listlike
         An Instance of Records or a list of PubmedRecord instances.
 
-    Attributes
-    ----------
-    exclude_ : list
-        The record indices to drop. Note. exclude_ will be emptied when
-        creating new instances as it is assumed that creating records
-        from existing records is performed to filter out.
-
-    Methods
-    -------
-    browse:
-        View records and drop record if desired.
-    filter:
-        Filter records.
-    drop:
-        Drop records marked for exclusion.
-    save:
-        Save the records to a json file. The current session can later be
-        restored using the `read_records` function.
-    save_as_bibtex:
-        Save records in BibTex format.
-    save_as_nbib:
-        Save records in Medline format.
-    tolist:
-        Convert records to list.
-    copy:
-        Create a copy of the records.
     """
     def __init__(self, records=None):
         self.exclude_ = []
@@ -434,7 +400,7 @@ class Records(list):
             self.exclude_ = [i for i in remove_idx if i not in self.exclude_]
 
     def find(self, regexp):
-        """ Find records for which as substring or regexp matches
+        """Find records for which as substring or regexp matches
 
         regexp : str
             Regular expression or substring to select particular records. E.g.
@@ -444,7 +410,7 @@ class Records(list):
         return Records(r for r in self if r.match(regexp))
 
     def drop(self):
-        """ Delete records
+        """Delete records
 
         Returns
         -------
@@ -456,7 +422,7 @@ class Records(list):
         return
 
     def save(self, fname, mode='w', indent=None, separators=None):
-        """ Save records to json file
+        """Save records to json file
 
         Parameters
         ----------
@@ -472,7 +438,7 @@ class Records(list):
         write_records(self, fname)
 
     def save_as_bibtex(self, fname):
-        """ Export records in bibtex file
+        """Export records in bibtex file
 
         Parameters
         ----------
@@ -482,7 +448,7 @@ class Records(list):
         _export_records(self, fname, '.bib', 'to_bibtex')
 
     def save_as_nbib(self, fname):
-        """ Export records in bibtex file
+        """Export records in bibtex file
 
         Parameters
         ----------
@@ -493,7 +459,7 @@ class Records(list):
         _export_records(self, fname, '.nbib', 'to_nbib')
 
     def tolist(self):
-        """ Convert records to list
+        """Convert records to list
 
         Returns
         -------
@@ -502,7 +468,7 @@ class Records(list):
         return list(self)
 
     def copy(self):
-        """ Copy records
+        """Copy records
 
         Returns
         -------
@@ -511,7 +477,7 @@ class Records(list):
         return deepcopy(self)
 
     def append(self, value):
-        """ Append records
+        """Append records
 
         Parameters
         ----------
@@ -528,7 +494,7 @@ class Records(list):
         self.insert(len(self), value)
 
     def extend(self, values):
-        """ Extend records
+        """Extend records
 
         Parameters
         ----------
@@ -545,7 +511,7 @@ class Records(list):
             self.append(v)
 
     def insert(self, index, record):
-        """
+        """Insert record
 
         Parameters
         ----------
@@ -562,7 +528,8 @@ class Records(list):
             list.insert(self, index, record)
 
     def pop(self, index):
-        """
+        """Remove and return record
+
         Parameters
         ----------
         index : int
@@ -592,25 +559,25 @@ class Records(list):
         return out + '%s>' % yrange
 
     def __add__(self, other):
-        """ Add together different instances of Records """
+        """Add different instances of Records"""
         if not isinstance(other, Records):
             raise TypeError('Only instances of Records can be added together.')
         return Records(list.__add__(self, other))
 
     def __iadd__(self, values):
-        """ Append Operator """
+        """Append Operator"""
         if not isinstance(values, Records):
             raise TypeError('Only instances of Records can be added together.')
         self.extend(values)
         return self
 
     def __getslice__(self, *args):
-        """ Slicing operator """
+        """Slicing operator"""
         return Records(list.__getslice__(self, *args))
 
 
 def query_records(term, client, pubmed_fields='all', chunksize=50):
-    """ Initialize new Records Instance
+    """Get records from PubMed search
 
     Parameters
     ----------
