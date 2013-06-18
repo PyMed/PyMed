@@ -312,7 +312,7 @@ class PubmedRecord(dict):
         return _get_doi(self)
 
     def resolve_doi(self):
-        """ Check whethe record as doi
+        """ Get address from doi
         """
         return resolve_doi(self)
 
