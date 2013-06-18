@@ -27,7 +27,6 @@ recs = pm.read_records('sample_records_dki.json')
 # ... read one record, nicely printed.
 print recs[12].to_ascii(width=100)
 
-# but also for filtering
 # ... get the publication year as integer
 print recs[12].year
 
@@ -35,8 +34,8 @@ print recs[12].year
 # this is particularly useful for search in terms in records.
 print recs[12].as_corpus()
 
-# ... resolve digital object identifier of record
-# (requires network connection).
+# ... resolve digital object identifier of a record
+# (requires network connection --- uncomment if you're connected).
 # print recs[12].resolve_doi()
 
 # Uncomment the following line to read through your records and discard

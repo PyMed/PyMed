@@ -3,9 +3,9 @@
 # License: BSD (3-clause)
 
 """
-=================================
-Initialzie Query and Save Results
-=================================
+=============================
+Make a query and save results
+=============================
 
 This example deomstrates how to setup a query,
 download PubMed records and save the results.
