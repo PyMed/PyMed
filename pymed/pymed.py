@@ -109,10 +109,7 @@ def _bibtex_get_pages(pages_str):
 def _bibtex_get_publication_type(ins):
     """Aux Function"""
     out = 'article'
-    # if isinstance(ins, list):
-    #     ins = '--'.join(ins)
-    # if PMD.PT_ARTICLE in ins.lower() or not ins:
-    #     out = 'article'
+    # XXX currently only article supported.
     return out
 
 
@@ -171,7 +168,7 @@ class PubmedRecord(dict):
     Methods
     -------
     as_corpus:
-        Creates single string from record values/
+        Creates single string from record values.
     to_ascii:
         Create formatted text from the records for reading and printing.
     to_nbib:
@@ -336,9 +333,9 @@ class PubmedRecord(dict):
 class Records(list):
     """Process PubMed records
 
-    Note. Records is a subclass of list and therefore all list methods are
-    also available for instances of Records.
-    However, the list methods semantics is adapted to the Records use case.
+    Note. Records is a subclass of list, hence, for instances of Records
+    all list methods are available. However, the list methods semantics
+    is slightly adapted to support processing PubMed records.
 
     These differences can be summarized as follows:
     - the `append` and `extend` methods will only accept iterables of
@@ -364,8 +361,7 @@ class Records(list):
         if records:
             self.extend(records)
 
-    def browse(self, show_fields=('AU', 'TI', 'AB'), inplace=True,
-               width=80):
+    def browse(self, show_fields=None, inplace=True, width=80):
         """ Browse and drop records
 
         This method allows to iterate over records, display their contents
@@ -384,6 +380,8 @@ class Records(list):
         width : int
             The number of characters to display in one line.
         """
+        if show_fields is None:
+            show_fields = 'AU', 'TI', 'AB',
         remove_idx = []
         for idx, rec in enumerate(self):
             if rec not in self.exclude_:
@@ -416,10 +414,8 @@ class Records(list):
         -------
         self : instance of pymed.Records
         """
-        [self.remove(r) for ii, r in enumerate(self)
-            if ii in self.exclude_]
+        [self.remove(r) for ii, r in enumerate(self) if ii in self.exclude_]
         self.exclude_ = []
-        return
 
     def save(self, fname, mode='w', indent=None, separators=None):
         """Save records to json file
