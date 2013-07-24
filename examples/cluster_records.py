@@ -44,6 +44,8 @@ lsa = TruncatedSVD(n_components=n_components).fit_transform(tfidf)
 lsa = normalize(lsa)
 
 print("Clustering {} records into {} clusters.".format(len(recs), n_clusters))
+# Note that if you have huge numbers of records to cluster,
+# sklearn.cluster.MiniBatchKMeans is a better option.
 km = KMeans(n_clusters=n_clusters, max_iter=20, n_init=10)
 
 labels = km.fit_predict(tfidf)
