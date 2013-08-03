@@ -386,7 +386,7 @@ class Records(list):
         for idx, rec in enumerate(self):
             if rec not in self.exclude_:
                 rec.to_ascii(show_fields=show_fields, width=width)
-                print '\n --> keep this record? (y/n)'
+                print '\n --> keep this record? (y/n/q)'
                 res = raw_input()
                 if res == 'n':
                     remove_idx += [idx]
