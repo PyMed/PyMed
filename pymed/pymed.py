@@ -486,7 +486,7 @@ class Records(list):
         """
         if not isinstance(value, PubmedRecord):
             raise TypeError('The item to be added must be an instance of '
-                'PubmedRecord.')
+                            'PubmedRecord.')
         self.insert(len(self), value)
 
     def extend(self, values):
