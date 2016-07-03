@@ -16,14 +16,14 @@ is initialized randomly.
 (Try running this on a larger set for better results.)
 
 """
-print(__doc__)
-
 import numpy as np
 import pymed as pm
 from sklearn.cluster import KMeans
 from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import normalize
+
+print(__doc__)
 
 # settings
 field = 'AB'        # what we want to cluster

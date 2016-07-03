@@ -5,13 +5,23 @@
 
 import json
 import re
-import urllib2
 import textwrap
 from copy import deepcopy
 from .constants import PMD
 
 from Bio import Entrez, Medline
-from itertools import izip_longest
+
+try:
+    from itertools import izip_longest
+except ImportError:
+    from itertools import zip_longest as izip_longest
+try:
+    # For Python 3.0 and later
+    from urllib.request import urlopen
+    from urllib.error import HTTPError
+except ImportError:
+    # Fall back to Python 2's urllib2
+    from urllib2 import urlopen, HTTPError
 
 DOI_REGEX = '(10\\.\\d{4,6}/[^"\'&<% \t\n\r\x0c\x0b]+)'
 DOI_ORG = 'http://dx.doi.org/'
@@ -135,8 +145,8 @@ def resolve_doi(rec):
     if doi is not None:
         res = None
         try:
-            res = urllib2.urlopen(DOI_ORG + doi)
-        except urllib2.HTTPError, e:
+            res = urlopen(DOI_ORG + doi)
+        except HTTPError as e:
             res = e
         return res.url
 
@@ -222,8 +232,8 @@ class PubmedRecord(dict):
         width : int
             The number of characters to display in one line.
         """
-        print ''
-        print '----- %s' % self.pubmed_id
+        print('')
+        print('----- %s' % self.pubmed_id)
         for field in show_fields:
             pretty_field = '\n' + PMD[field] + ':\n'
             out = self.get(field, '%s not available for this rec')
@@ -233,7 +243,7 @@ class PubmedRecord(dict):
             out = textwrap.fill(out, width=width,
                                 initial_indent=ind,
                                 subsequent_indent=ind)
-            print pretty_field + out
+            print(pretty_field + out)
 
     def match(self, regexp):
         """match the text corpus against a regular expression or substring
@@ -282,7 +292,7 @@ class PubmedRecord(dict):
         fmt = {
             'PT': _bibtex_get_publication_type(self.get('PT', 'NA')),
             'KEY': _bibtex_make_id(self.get('AU', ''), self.get('JT', 'NA'),
-                    self.year),
+                                   self.year),
             'AU': _bibtex_get_author(self.get('AU', 'NA')),
             'TI': self.get('TI', 'NA'),
             'JN': self.get('JT', 'NA').replace('&', '\&'),
@@ -386,8 +396,8 @@ class Records(list):
         for idx, rec in enumerate(self):
             if rec not in self.exclude_:
                 rec.to_ascii(show_fields=show_fields, width=width)
-                print '\n --> keep this record? (y/n/q)'
-                res = raw_input()
+                print('\n --> keep this record? (y/n/q)')
+                res = input()
                 if res == 'n':
                     remove_idx += [idx]
                 elif res == 'q':
@@ -594,8 +604,8 @@ def query_records(term, client, pubmed_fields='all', chunksize=50):
     if pubmed_fields is None:
         pubmed_fields = PMD.DEF_FIELDS
 
-    print 'Starting query.'
-    print '... please be patient. This may take some time.'
+    print('Starting query.')
+    print('... please be patient. This may take some time.')
 
     Entrez.email = client
     handle = Entrez.egquery(term=term)  # create handle
@@ -603,8 +613,8 @@ def query_records(term, client, pubmed_fields='all', chunksize=50):
     _retmax = sum(int(r['Count']) for r in record['eGQueryResult']
                   if r['DbName'] == 'pubmed')
 
-    print '... %i records found.' % _retmax
-    print '... downloading records.'
+    print('... %i records found.' % _retmax)
+    print('... downloading records.')
     handle = Entrez.esearch(db='pubmed', term=term,
                             retmax=str(_retmax),
                             usehistory='n')  # create another handle
@@ -612,7 +622,7 @@ def query_records(term, client, pubmed_fields='all', chunksize=50):
     hit = Entrez.read(handle)  # parse pubmed IDs...
     id_list = list(hit['IdList'])
     if not id_list:
-        print r"I couldn't find anything"
+        print(r"I couldn't find anything")
 
     chunks = _make_chunks(chunksize, id_list, '')
 
@@ -637,5 +647,5 @@ def query_records(term, client, pubmed_fields='all', chunksize=50):
             recs.append(PubmedRecord(dict((k, v) for k, v in rec.items()
                         if match(k))))
 
-    print 'Ready.'
+    print('Ready.')
     return recs

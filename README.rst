@@ -18,22 +18,17 @@ To get the latest code using git, simply type::
     git clone git@github.com:PyMed/PyMed.git
 
 If you don't have git installed, you can download a zip or tarball
-of the latest code:: 
-    
+of the latest code::
+
     git@github.com:PyMed/PyMed.git
 
 Install PyMed
 ^^^^^^^^^^^^^
 
-As any Python packages, to install PyMed, go in the pymrf source
+As any Python packages, to install PyMed, go in the pymed source
 code directory and do::
 
-    python setup.py install
-
-or if you don't have admin access to your python setup (permission denied
-when install) use::
-
-    python setup.py install --user
+    python setup.py develop
 
 Dependencies
 ^^^^^^^^^^^^

@@ -14,9 +14,10 @@ A last section shows how to save and export results for usage
 with bibliographic software.
 
 """
-print __doc__
-
 import pymed as pm
+import numpy as np
+
+print(__doc__)
 
 # load records
 recs = pm.read_records('sample_records_dki.json')
@@ -25,14 +26,14 @@ recs = pm.read_records('sample_records_dki.json')
 # Access records in different ways
 
 # ... read one record, nicely printed.
-print recs[12].to_ascii(width=100)
+print(recs[12].to_ascii(width=100))
 
 # ... get the publication year as integer
-print recs[12].year
+print(recs[12].year)
 
 # ... get contents as corpus (concatenated as one string)
 # this is particularly useful for search in terms in records.
-print recs[12].as_corpus()
+print(recs[12].as_corpus())
 
 # ... resolve digital object identifier of a record
 # (requires network connection --- uncomment if you're connected).
@@ -48,18 +49,18 @@ print recs[12].as_corpus()
 # cases of dictionaries.
 
 last_rec = recs.pop(-1)
-print last_rec.keys()
+print(last_rec.keys())
 
 ###############################################################################
 # Filter and combine records
 
 # get all records that have an abstract and are related to brains.
 recs = pm.Records(r for r in recs if 'AB' in r and r.match('brain'))
-print recs
+print(recs)
 
 # remove all records published before 2010.
 recs = pm.Records(r for r in recs if r.year > 2010)
-print recs
+print(recs)
 
 # Because of the PubMed ID records are unique and can therefore be hashed.
 # This means you can use records as keys in dictionaries or use set logic
@@ -68,13 +69,12 @@ print recs
 # using random indices and then apply set operations to uniquely combine them.
 n_rec = len(recs)
 
-import numpy as np
 inds1, inds2, = np.random.randint(n_rec / 2, size=(2, n_rec))
 recs1 = pm.Records(rec for ii, rec in enumerate(recs) if ii in inds1)
 recs2 = pm.Records(rec for ii, rec in enumerate(recs) if ii in inds2)
 
 # Now print unique records.
-print pm.Records(set(recs1 + recs2))
+print(pm.Records(set(recs1 + recs2)))
 
 ###############################################################################
 # Save and export results.
@@ -83,7 +83,7 @@ print pm.Records(set(recs1 + recs2))
 # the Medline nbib format using he `save_as_nbib` method.
 
 # ... print single record in BibTex format
-print recs[12].to_bibtex()
+print(recs[12].to_bibtex())
 
 # ... save all records
 recs.save_as_bibtex('mybib.bib')
